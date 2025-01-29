@@ -8,13 +8,11 @@ class TopicService {
   }
 
   static async getById(topicId) {
-    return (
-      await Topic.findByPk(topicId),
-      {
-        include: ["user", "card"],
-      }
-    );
+    return await Topic.findByPk(topicId, {
+      include: ["user", "card"],
+    });
   }
+  
 }
 
 module.exports = TopicService;

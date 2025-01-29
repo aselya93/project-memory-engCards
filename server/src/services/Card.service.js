@@ -1,6 +1,13 @@
 const { Card, Topic } = require("../db/models");
 
 class CardService {
+
+  static async getCardsByTopic(topicId, where = {}) {
+    return await Card.findAll({
+      where: { topicId, ...where },
+    });
+  }
+  
   // Получить все не изученные карточки для темы
   static async getAllNotLearned(topicId) {
     return await Card.findAll({
@@ -12,13 +19,9 @@ class CardService {
   }
 
   // Получить все изученные карточки для темы
-  static async getLearnedByTopicId(topicId) {
+  static async getLearnedByTopicId(topicId, where = {}) {
     return await Card.findAll({
-      where: {
-        topicId,
-        isLearned: true,
-      },
-      include: [{ model: Topic, as: "topic" }],
+      where: { topicId, ...where },
     });
   }
 
