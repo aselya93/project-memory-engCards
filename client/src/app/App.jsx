@@ -40,15 +40,15 @@ function App() {
         { path: "/", element: <MainPage user={user} /> },
         { path: "/signup", element: <SignUpPage setUser={setUser} /> },
         { path: "/signin", element: <SignInPage setUser={setUser} /> },
-        { path: "/topics", element: <TopicPage user={user} /> },
+        { path: "/topics", element: <TopicPage /> },
         {
-          path: `/topics/:topicId/cards`,
-          element: <MemoryCardPage user={user} />,
+          path: `/cards/:topicId`,
+          element: <MemoryCardPage />,
         },
-        {
-          path: `/topics/:topicId/cards`,
-          element: <CreateMemoryCard user={user} />,
-        },
+        // {
+        //   path: `/topics/:topicId/cards`,
+        //   element: <CreateMemoryCard user={user} />,
+        // },
 
         { path: "/contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },

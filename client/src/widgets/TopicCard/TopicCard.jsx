@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function TopicCard({ topic }) {
+function TopicCard({  topic }) {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
   const topicHandler = async () => {
-    navigate(`/${topic.id}/cards`);
+    navigate(`/cards/${topic.id}`);
   };
 
   return (

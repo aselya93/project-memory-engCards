@@ -8,7 +8,7 @@ const formatResponse = require("../utils/formatResponse");
 router
 .use("/auth", authRoutes)
 .use("/topics", topicRoutes)
-.use("/topics/:topicId/cards", cardRoutes) //карточки по теме 
+.use("/cards", cardRoutes) //карточки по теме 
 
 
 

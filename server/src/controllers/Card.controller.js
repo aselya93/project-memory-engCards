@@ -2,6 +2,7 @@ const isValidId = require("../utils/isValidId");
 const formatResponse = require("../utils/formatResponse");
 const CardService = require("../services/Card.service");
 const CardValidator = require("../utils/Card.validator");
+const { Card, Topic } = require("../db/models");
 
 class CardController {
   // Получить карточки темы (с фильтром по isLearned)
@@ -19,7 +20,7 @@ class CardController {
         whereClause.isLearned = isLearned === "true"; // Привести строку к Boolean
       }
 
-      const cards = await CardService.getCardsByTopic(id, whereClause);
+      const cards = await Card.findAll({ where: { topicId: id } });
       res.status(200).json(formatResponse(200, "success", cards));
     } catch ({ message }) {
       console.error(message);
@@ -47,7 +48,6 @@ class CardController {
           .json(formatResponse(400, "Validation error", null, error));
       }
 
-     
       const newCard = await CardService.create({
         englishWord,
         russianWord,
