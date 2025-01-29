@@ -1,21 +1,16 @@
-import { Card } from 'antd';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Card } from "antd";
+import React, { useState } from "react";
+import styles from "./MemoryCard.module.css";
 
-function MemoryCard({user, memoryCard, topicId}) {
+function MemoryCard({ user, memoryCard, topicId }) {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-    const navigate = useNavigate();
-    const [isFlipped, setIsFlipped] = useState(false);
-
-    const memoryCardHandler = async () => {
-        navigate(`/${topicId}/cards`);
-      };
-
-    return (
-        <Card onClick={() => setIsFlipped(!isFlipped)}>
-    <div>{isFlipped ? memoryCard.russianWord : memoryCard.englishWord}</div>
-  </Card>
-    );
+  return (
+    <div className={`card ${isFlipped ? "flipped" : ""}`}>
+      <div className={styles.cardFront}>{memoryCard.englishWord}</div>
+      <div className={styles.cardBack}>{memoryCard.russianWord}</div>
+    </div>
+  );
 }
 
 export default MemoryCard;
