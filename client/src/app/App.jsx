@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
@@ -6,11 +6,12 @@ import SignInPage from "../pages/SignInPage/SignInPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import MainPage from "../pages/MainPage/MainPage";
 import Navigation from "../widgets/Navigation/Navigation";
-import { setAccessToken } from "../shared/lib/axiosInstance"
+import { setAccessToken } from "../shared/lib/axiosInstance";
 import UserApi from "../entities/user/api/UserApi";
+import TopicPage from "../pages/TopicPage/TopicPage";
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     UserApi.refreshTokens()
@@ -29,7 +30,6 @@ function App() {
       });
   }, []);
 
-  
   const router = createBrowserRouter([
     {
       path: "/",
@@ -38,6 +38,7 @@ function App() {
         { path: "/", element: <MainPage user={user} /> },
         { path: "/signup", element: <SignUpPage setUser={setUser} /> },
         { path: "/signin", element: <SignInPage setUser={setUser} /> },
+        { path: "/topics", element: <TopicPage user={user} /> },
 
         { path: "/contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },
@@ -47,4 +48,4 @@ function App() {
   return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
