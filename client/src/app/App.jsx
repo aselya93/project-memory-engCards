@@ -9,6 +9,8 @@ import Navigation from "../widgets/Navigation/Navigation";
 import { setAccessToken } from "../shared/lib/axiosInstance";
 import UserApi from "../entities/user/api/UserApi";
 import TopicPage from "../pages/TopicPage/TopicPage";
+import CreateMemoryCard from "../widgets/CreateMemoryCard/CreateMemoryCard";
+import MemoryCardPage from "../pages/MemoryCardPage/MemoryCardPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -39,6 +41,14 @@ function App() {
         { path: "/signup", element: <SignUpPage setUser={setUser} /> },
         { path: "/signin", element: <SignInPage setUser={setUser} /> },
         { path: "/topics", element: <TopicPage user={user} /> },
+        {
+          path: `/topics/:topicId/cards`,
+          element: <MemoryCardPage user={user} />,
+        },
+        {
+          path: `/topics/:topicId/cards`,
+          element: <CreateMemoryCard user={user} />,
+        },
 
         { path: "/contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },

@@ -19,7 +19,7 @@ class CardController {
         whereClause.isLearned = isLearned === "true"; // Привести строку к Boolean
       }
 
-      const cards = await CardService.getAllNotLearned(id);
+      const cards = await CardService.getCardsByTopic(id, whereClause);
       res.status(200).json(formatResponse(200, "success", cards));
     } catch ({ message }) {
       console.error(message);
@@ -47,6 +47,7 @@ class CardController {
           .json(formatResponse(400, "Validation error", null, error));
       }
 
+     
       const newCard = await CardService.create({
         englishWord,
         russianWord,
