@@ -7,8 +7,22 @@ module.exports = {
       "Topics",
       [
         {
-          name: "John Doe",
-          isBetaMember: false,
+          name: "Идиомы и выражения на английском",
+          userId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Известные цитаты из фильмов",
+          userId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Знакомство",
+          userId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
