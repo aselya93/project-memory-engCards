@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #F2F2F2, #D1E2E3);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
+}
+
+/* Анимация плавного градиента */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Контейнер */
+.container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.9); /* Белый полупрозрачный фон */
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+    min-height: 80vh;
+    position: relative;
+}
+
+/* Легкие анимации для фона */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+    opacity: 0.5;
+}
+
+/* Анимация частиц */
+@keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-50px) scale(1.1); opacity: 0.6; }
+    100% { transform: translateY(-100px) scale(0.9); opacity: 0; }
+}
+
+/* Стили для блока с темами */
+.topicList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}

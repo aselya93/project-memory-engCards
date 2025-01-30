@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { message as antMessage } from "antd";
 import TopicApi from "../../entities/topic/api/TopicApi";
 import TopicCard from "../TopicCard/TopicCard";
+import styles from "./TopicList.module.css";
 
-function TopicList({ user }) {
+function TopicList({ user, selectedTopic }) {
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const loadTopics = async () => {
     setLoading(true);
     try {
-      const { data, statusCode, error, message } =
-        await TopicApi.getAllTopics();
+      const { data, statusCode, error, message } = await TopicApi.getAllTopics();
       if (error) {
         antMessage.error(error);
         return;
@@ -31,16 +31,20 @@ function TopicList({ user }) {
 
   useEffect(() => {
     loadTopics();
-  }, []);
+  }, [selectedTopic]);
 
   return (
-    <div>
-      <div> {loading && <h4> Загрузка...</h4>}</div>
+    <div className={styles.container}>
+      {loading && <div className={styles.loadingMessage}>Загрузка...</div>}
 
       {topics?.length > 0 ? (
-        topics.map((topic) => <TopicCard key={topic.id} topic={topic} />)
+        <div className={styles.topicList}>
+          {topics.map((topic) => (
+            <TopicCard key={topic.id} topic={topic} />
+          ))}
+        </div>
       ) : (
-        <h3>Темы не найдены </h3>
+        <div className={styles.noTopicsMessage}>Темы не найдены</div>
       )}
     </div>
   );

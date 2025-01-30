@@ -1,0 +1,52 @@
+.topicCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .topicCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .topicCardHeader {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .topicCardHeader:hover {
+    color: #1dbf73; /* Цвет акцента */
+  }
+  
+  .topicCardContent {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1;
+  }
+  
+  .topicCardFooter {
+    font-size: 0.9rem;
+    color: #999;
+    text-align: right;
+    transition: color 0.3s ease;
+  }
+  
+  .topicCardFooter:hover {
+    color: #1dbf73;
+  }
+  
+  .topicCard p {
+    margin: 0;
+  }
+  

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
+import styles from "./TopicPage.module.css";
 import TopicList from "../../widgets/TopicList/TopicList";
 
 function TopicPage({ user }) {
   return (
-    <div>
+    <div className={styles.container}>
       <TopicList user={user} />
     </div>
   );

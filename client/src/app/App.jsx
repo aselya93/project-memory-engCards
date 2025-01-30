@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
@@ -37,18 +37,21 @@ function App() {
       path: "/",
       element: <Navigation user={user} setUser={setUser} />,
       children: [
-        { path: "/", element: <MainPage user={user} /> },
+        { path: "/", element: <MainPage /> },
         { path: "/signup", element: <SignUpPage setUser={setUser} /> },
         { path: "/signin", element: <SignInPage setUser={setUser} /> },
-        { path: "/topics", element: <TopicPage /> },
         {
-          path: `/cards/:topicId`,
-          element: <MemoryCardPage />,
+          path: "/topics",
+          element: user ? <TopicPage /> : <SignInPage setUser={setUser} />,
         },
-        // {
-        //   path: `/topics/:topicId/cards`,
-        //   element: <CreateMemoryCard user={user} />,
-        // },
+        {
+          path: "/cards/:topicId",
+          element: <MemoryCardPage user={user} />,
+        },
+        {
+          path: `/createMemoryCardByTopicId`,
+          element: user && <CreateMemoryCard user={user} />,
+        },
 
         { path: "/contact", element: <ContactPage /> },
         { path: "*", element: <NotFoundPage /> },

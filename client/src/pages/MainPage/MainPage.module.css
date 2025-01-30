@@ -1,0 +1,110 @@
+/* MainPage.module.css */
+
+.container {
+    background-color: #f7f8fa; /* Светлый фон */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .heroSection {
+    background-color: #1dbf73; /* Зеленый, похожий на Duolingo */
+    padding: 60px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    color: white;
+    max-width: 800px;
+    margin-bottom: 50px;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .mainButton {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #5a5a5a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mainButton:hover {
+    background-color: #3a3a3a;
+  }
+  
+  .animatedSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+  
+  .animationContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+    animation: moveAnimation 5s ease-in-out infinite;
+  }
+  
+  .animatedImage {
+    width: 200px;
+    animation: moveUpDown 2s ease-in-out infinite;
+  }
+  
+  .superDuolingo {
+    background-color: #f0f4f8;
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .superDuolingo h2 {
+    font-size: 2rem;
+    color: #4e5b6e;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .superDuolingo p {
+    font-size: 1.2rem;
+    color: #3c4a5a;
+  }
+  
+  /* Анимация для двигающейся картинки */
+  @keyframes moveAnimation {
+    0% {
+      transform: translateX(-50px);
+    }
+    50% {
+      transform: translateX(50px);
+    }
+    100% {
+      transform: translateX(-50px);
+    }
+  }
+  
+  /* Анимация для движения изображения вверх и вниз */
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  

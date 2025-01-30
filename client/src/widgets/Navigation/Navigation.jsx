@@ -2,10 +2,13 @@ import React from "react";
 import UserApi from "../../entities/user/api/UserApi";
 import { message as antMessage, Button } from "antd";
 import { setAccessToken } from "../../shared/lib/axiosInstance";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
+import styles from "./Navigation.module.css";
+import { Header } from "antd/es/layout/layout";
 
 function Navigation({ user, setUser }) {
   const navigate = useNavigate();
+  const { topicId } = useParams();
 
   const signOutHandler = async () => {
     try {
@@ -27,30 +30,35 @@ function Navigation({ user, setUser }) {
   };
 
   return (
-    <div>
-      <div>
-        <Button onClick={() => navigate("/")} />
-        Главная
-      </div>
-      <div>
-        {user ? (
-          <>
-            <div>
-              <Button onClick={signOutHandler}>Выйти</Button>
-            </div>
-          </>
-        ) : (
-          <div>
-            <Link to="/signin">
-              <Button type="link">Войти</Button>
-            </Link>
+    <div style={{ fontSize: "18px", fontWeight: "bold" }}>
+      <Header>
+        <div className={styles.navbarLinks}>
+          <Link to="/" className={styles.navLink}>
+            Home
+          </Link>
 
-            <Link to="/signup">
-              <Button type="link">Регистрация</Button>
-            </Link>
-          </div>
-        )}
-      </div>
+          {user ? (
+            <div className={styles.userSection}>
+              <span className={styles.username}>Welcome, {user.username}</span>
+              <Link to="/createMemoryCardByTopicId" className={styles.navLink}>
+                <Button type="primary">Add New Word</Button>
+              </Link>
+              <Button onClick={signOutHandler} className={styles.logoutButton}>
+                Log Out
+              </Button>
+            </div>
+          ) : (
+            <div className={styles.authLinks}>
+              <Link to="/signin" className={styles.navLink}>
+                <Button type="link">Sign In</Button>
+              </Link>
+              <Link to="/signup" className={styles.navLink}>
+                <Button type="link">Sign Up</Button>
+              </Link>
+            </div>
+          )}
+        </div>
+      </Header>
       <Outlet />
     </div>
   );

@@ -1,25 +1,9 @@
-const { Card, Topic } = require("../db/models");
+const { Card } = require("../db/models");
 
 class CardService {
-
-  
-  
-  // // Получить все не изученные карточки для темы
-  // static async getAllNotLearned(topicId) {
-  //   return await Card.findAll({
-  //     where: {
-  //       topicId,
-  //       isLearned: false,
-  //     },
-  //   });
-  // }
-
-  // // Получить все изученные карточки для темы
-  // static async getLearnedByTopicId(topicId, where = {}) {
-  //   return await Card.findAll({
-  //     where: { topicId, ...where },
-  //   });
-  // }
+  static async getCardsByTopic(topicId) {
+    return await Card.findAll({ where: { topicId } });
+  }
 
   // Создать новую карточку
   static async create(data) {
@@ -30,8 +14,8 @@ class CardService {
   }
 
   // Обновить статус "изучено" для карточки
-  static async updateIsLearned(cardId, isLearned) {
-    const card = await Card.findByPk(cardId);
+  static async updateIsLearned(id, isLearned) {
+    const card = await Card.findByPk(id);
     if (!card) return null;
 
     card.isLearned = isLearned;

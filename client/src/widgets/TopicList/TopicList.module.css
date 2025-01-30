@@ -1,0 +1,46 @@
+.container {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.topicList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.loadingMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #5a5a5a;
+    font-weight: 500;
+}
+
+.noTopicsMessage {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* Улучшенные карточки тем */
+.topicCard {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    font-family: "Inter", sans-serif;
+}
+
+.topicCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    background: #f0f4f8;
+}

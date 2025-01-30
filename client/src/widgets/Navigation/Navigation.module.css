@@ -1,0 +1,86 @@
+/* Основные стили для Navbar */
+.navbar {
+    background-color: #f0f4f8; /* Светлый серо-голубой фон */
+    padding: 15px 30px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Обеспечивает, что navbar будет выше остальных элементов */
+  }
+  
+  .navbarLinks {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navLink {
+    font-size: 1rem;
+    color: #4e5b6e; /* Темно-серый оттенок для ссылок */
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .navLink:hover {
+    color: #1f75ff; /* Синий акцент при наведении */
+  }
+  
+  .userSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .username {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #3c4a5a; /* Теплый темно-серый для текста */
+  }
+  
+  .logoutButton {
+    background-color: #ff6584; /* Мягкий розовый для кнопки выхода */
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+  }
+  
+  .logoutButton:hover {
+    background-color: #e0506d; /* Тёмный розовый при наведении */
+  }
+  
+  .authLinks {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Добавим отступ сверху для контента, чтобы он не перекрывался навбаром */
+  .mainContent {
+    margin-top: 80px; /* Отступ, равный высоте навбара */
+  }
+  
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 768px) {
+    .navbarLinks {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  
+    .userSection,
+    .authLinks {
+      margin-top: 10px;
+      gap: 10px;
+    }
+  }
+  
