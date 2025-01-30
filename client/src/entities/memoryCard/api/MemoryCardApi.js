@@ -1,9 +1,11 @@
 import { axiosInstance } from "../../../shared/lib/axiosInstance";
 
 export default class MemoryCardApi {
-  static async getMemoryCardsByTopic(topicId) {
+  static async getMemoryCardsByTopic(topicId, isLearned) {
     try {
-      const { data } = await axiosInstance.get(`/cards/${topicId}`);
+      const { data } = await axiosInstance.get(`/cards/${topicId}`, {
+        params: { isLearned: isLearned },
+      });
       return data;
     } catch (error) {
       return error.response.data;
@@ -12,17 +14,20 @@ export default class MemoryCardApi {
 
   static async createMemoryCard(topicId, cardData) {
     try {
-      const { data } = await axiosInstance.post(`/cards/${topicId}`, cardData);
-      return data;
+      const response = await axiosInstance.post(`/cards/${topicId}`, {
+        ...cardData,
+        topicId,
+      });
+      return response.data;
     } catch (error) {
       return error.response.data;
     }
   }
 
-  static async updateMarkAsLearnedMemoryCard(topicId, id) {
+  static async updateMarkAsLearnedMemoryCard(id) {
     try {
-      const { data } = await axiosInstance.put(`/cards/${topicId}/${id}`, {
-        isLearned: false,
+      const { data } = await axiosInstance.put(`/cards/${id}`, {
+        isLearned: true,
       });
       return data;
     } catch (error) {

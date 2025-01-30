@@ -1,6 +1,6 @@
 class CardValidator {
   static validate(data) {
-    const { englishWord, russianWord, isLearned } = data;
+    const { englishWord, russianWord } = data;
 
     if (
       !englishWord ||
@@ -22,14 +22,14 @@ class CardValidator {
         isValid: false,
         error: "russianWord is required and must be a non-empty string.",
       };
-    }
+     }
 
-    if (!isLearned || typeof isLearned !== "boolean") {
-      return {
-        isValid: false,
-        error: "isLearned is required and must be a non-empty boolean.",
-      };
-    }
+    // if (!isLearned || typeof isLearned !== "boolean") {
+    //   return {
+    //     isValid: false,
+    //     error: "isLearned is required and must be a non-empty boolean.",
+    //   };
+    // }
 
     return {
       isValid: true,

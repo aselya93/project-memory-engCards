@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
@@ -37,7 +37,7 @@ function App() {
       path: "/",
       element: <Navigation user={user} setUser={setUser} />,
       children: [
-        { path: "/", element: <MainPage user={user} /> },
+        { path: "/", element: <MainPage /> },
         { path: "/signup", element: <SignUpPage setUser={setUser} /> },
         { path: "/signin", element: <SignInPage setUser={setUser} /> },
         {
@@ -45,11 +45,11 @@ function App() {
           element: user ? <TopicPage /> : <SignInPage setUser={setUser} />,
         },
         {
-          path: `/cards/:topicId`,
-          element: <MemoryCardPage />,
+          path: "/cards/:topicId",
+          element: <MemoryCardPage user={user} />,
         },
         {
-          path: `/cards/:topicId/createMemoryCardByTopic`,
+          path: `/createMemoryCardByTopicId`,
           element: user && <CreateMemoryCard user={user} />,
         },
 

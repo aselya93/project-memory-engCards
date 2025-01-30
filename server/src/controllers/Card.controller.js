@@ -2,25 +2,18 @@ const isValidId = require("../utils/isValidId");
 const formatResponse = require("../utils/formatResponse");
 const CardService = require("../services/Card.service");
 const CardValidator = require("../utils/Card.validator");
-const { Card, Topic } = require("../db/models");
 
 class CardController {
-  // Получить карточки темы (с фильтром по isLearned)
+  //получаю все карточки по теме
   static async getCardsByTopic(req, res) {
     try {
       const { id } = req.params; // ID темы
-      const { isLearned } = req.query; // Опциональный фильтр
-
       if (!isValidId(id)) {
         return res.status(400).json(formatResponse(400, "Invalid topic ID"));
       }
-
-      const whereClause = { topicId: id };
-      if (isLearned !== undefined) {
-        whereClause.isLearned = isLearned === "true"; // Привести строку к Boolean
-      }
-
-      const cards = await Card.findAll({ where: { topicId: id } });
+      const cards = await CardService.getCardsByTopic(id);
+      console.log(222222, cards);
+      // Получаем все карточки
       res.status(200).json(formatResponse(200, "success", cards));
     } catch ({ message }) {
       console.error(message);
@@ -33,13 +26,18 @@ class CardController {
   // Создать новую карточку
   static async createCard(req, res) {
     try {
-      const { englishWord, russianWord, topicId } = req.body;
+      const { englishWord, russianWord } = req.body;
       const { user } = res.locals;
+      const { id } = req.params;
+
+      if (!isValidId(id)) {
+        return res.status(400).json(formatResponse(400, "Invalid topic ID"));
+      }
 
       const { isValid, error } = CardValidator.validate({
         englishWord,
         russianWord,
-        topicId,
+        // isLearned,
       });
 
       if (!isValid) {
@@ -48,12 +46,14 @@ class CardController {
           .json(formatResponse(400, "Validation error", null, error));
       }
 
-      const newCard = await CardService.create({
-        englishWord,
-        russianWord,
-        topicId,
-        userId: user.id,
-      });
+      const newCard = await CardService.create(
+        req.body
+        // englishWord,
+        // russianWord,
+        // isLearned: false,
+        // userId: user.id,
+        // topicId:
+      );
 
       res
         .status(201)
@@ -70,17 +70,14 @@ class CardController {
   static async markAsLearned(req, res) {
     try {
       const { id } = req.params; // ID карточки
-
       if (!isValidId(id)) {
         return res.status(400).json(formatResponse(400, "Invalid card ID"));
       }
 
-      const updatedCard = await CardService.updateIsLearned(id, true);
+      const updatedCard = await CardService.updateIsLearned(id, true); // Помечаем карточку как изученную
 
       if (!updatedCard) {
-        return res
-          .status(404)
-          .json(formatResponse(404, `Card with id ${id} not found`));
+        return res.status(404).json(formatResponse(404, `Card not found`));
       }
 
       res

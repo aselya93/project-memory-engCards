@@ -1,13 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+.cardListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
 
+.cardListContainer h3 {
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.loadingMessage {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #1dbf73;
+  margin-top: 20px;
+}
+/* в файле ProgressBar.module.css или другом */
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Рамки для карточек */
 .cardContainer {
   perspective: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px;
+  margin: 15px; /* Отступы между карточками */
 }
 
+/* Стили для карточки */
 .card {
   width: 250px;
   height: 350px;
@@ -21,10 +57,12 @@
   border: 2px solid #d1d1d1; /* Тонкая граница */
 }
 
+/* Карточка, которая перевернута */
 .card.flipped {
   transform: rotateY(180deg);
 }
 
+/* Стили для передней и задней стороны карточки */
 .cardFront,
 .cardBack {
   position: absolute;
@@ -57,7 +95,7 @@
   align-items: center;
 }
 
-/* Кнопка теперь находится снизу, но текст остается строго по центру */
+/* Кнопка изучено */
 .learnedButton {
   position: absolute;
   bottom: 15px;
