@@ -18,13 +18,13 @@ function MemoryCard({ memoryCard, onLearn, learned }) {
           {/* Показываем кнопку "Изучено" только для не изученных карточек */}
           {!learned && (
             <button
-              className={styles.learnedButton}
+            className={`${styles.learnedButton} ${learned ? styles.active : ''}`}
               onClick={(e) => {
                 e.stopPropagation();
                 onLearn(memoryCard.id); // Помечаем карточку как изученную
               }}
             >
-              Изучено
+              Пометить как пройденную
             </button>
           )}
         </div>

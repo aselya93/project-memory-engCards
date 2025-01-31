@@ -115,7 +115,7 @@ module.exports = {
         },
         {
           englishWord: "Hakuna Matata!",
-          russianWord: "Хакуна Матата!",
+          russianWord: "Никаких забот!",
           isLearned: false,
           topicId: 2,
           createdAt: new Date(),

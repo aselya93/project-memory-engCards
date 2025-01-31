@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
 .cardContainer {
   perspective: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 15px;
+  
 }
 
 .card {
   width: 250px;
   height: 350px;
-  background-color: #fdfdfd;
+  background-color: #f4f4f4; /* Мягкий серый фон */
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -28,6 +27,7 @@
 .cardFront,
 .cardBack {
   position: absolute;
+  position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
@@ -35,9 +35,7 @@
   align-items: center;
   text-align: center;
   font-size: 1.5rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  color: #333;
+  color: #333; /* Цвет текста */
   backface-visibility: hidden;
   border-radius: 12px;
   padding: 20px;
@@ -45,26 +43,30 @@
 }
 
 .cardFront {
-  background-color: #ffffff;
+  background-color: #ffffff; /* Белый фон */
+  font-weight: bold;
 }
 
 .cardBack {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Очень светлый серый фон */
+  color: #333;
   transform: rotateY(180deg);
+  flex-direction: column;
+  justify-content: center !important;  /*  Центрируем текст по вертикали */
+  align-items: center;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 }
 
-/* Кнопка теперь находится снизу, но текст остается строго по центру */
 .learnedButton {
   position: absolute;
+  position: absolute;
   bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 15px; /* Перемещаем кнопку в нижний правый угол */
   padding: 10px 20px;
-  background-color: #5a5a5a;
+  background-color: #5a5a5a; /* Цвет по умолчанию */
   border: none;
   border-radius: 6px;
   color: #ffffff;
@@ -75,9 +77,31 @@
 }
 
 .learnedButton:hover {
-  background-color: #404040;
+  background-color: #054426; /* Более темный серый при наведении */
 }
 
 .learnedButton:focus {
   outline: none;
+  background-color: #28a745;
+}
+/* Стили для метки "Изучено" */
+.learnedTag {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #28a745 !important;
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Добавляем легкую тень */
+  margin-top: 200px;
+}
+
+/* Стили для рамки обратной стороны карточки */
+.cardBack {
+  position: relative;
+  padding: 20px;
+  border: 3px solid #d1d1d1; /* Увеличенная рамка на обратной стороне */
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
