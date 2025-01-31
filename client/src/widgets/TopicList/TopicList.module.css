@@ -1,32 +1,31 @@
 .container {
     padding: 30px;
-    background-color: #ffffff;
+    background-color: #f7f8fa;
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.topicList {
+  }
+  
+  .topicList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.loadingMessage {
+    gap: 30px;
+    grid-row-gap: 30px; /* Расстояние между строками */
+    
+  }
+  
+  .loadingMessage {
     text-align: center;
     font-size: 1.2rem;
-    color: #5a5a5a;
-    font-weight: 500;
-}
-
-.noTopicsMessage {
+    color: #888;
+  }
+  
+  .noTopicsMessage {
     text-align: center;
     font-size: 1.5rem;
-    color: #777;
-    font-style: italic;
-}
-
-/* Улучшенные карточки тем */
-.topicCard {
+    color: #888;
+  }
+  
+  .topicCard {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 12px;
@@ -37,10 +36,11 @@
     font-weight: 600;
     color: #333;
     font-family: "Inter", sans-serif;
+    margin-bottom: 20px; /* Добавьте нижний отступ */
 }
-
-.topicCard:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    background: #f0f4f8;
-}
+  
+  .topicCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  

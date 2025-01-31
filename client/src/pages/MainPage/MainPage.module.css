@@ -1,7 +1,7 @@
 /* MainPage.module.css */
 
 .container {
-    background-color: #f7f8fa; /* Светлый фон */
+    background-color: #647290; /* Светлый фон */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@
   }
   
   .heroSection {
-    background-color: #1dbf73; /* Зеленый, похожий на Duolingo */
+    background-color: #35bfc3; 
     padding: 60px 20px;
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
@@ -31,16 +31,17 @@
   .mainButton {
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: #5a5a5a;
+    background-color: #11c355; 
     color: white;
     padding: 15px 30px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
-  }
-  
-  .mainButton:hover {
-    background-color: #3a3a3a;
-  }
+    border: none;
+}
+
+.mainButton:hover {
+    background-color: #0b6c56 !important;; /* Темнее при наведении */
+}
   
   .animatedSection {
     display: flex;
@@ -94,6 +95,7 @@
       transform: translateX(-50px);
     }
   }
+
   
   /* Анимация для движения изображения вверх и вниз */
   @keyframes moveUpDown {
@@ -101,10 +103,44 @@
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-15px);
     }
     100% {
       transform: translateY(0);
     }
+    
+  }
+
+  @keyframes flyEllipse {
+    0% {
+      transform: translateX(-40vw) translateY(0);
+    }
+    25% {
+      transform: translateX(-20vw) translateY(-50px) scaleX(1.1);
+    }
+    50% {
+      transform: translateX(20vw) translateY(0);
+    }
+    75% {
+      transform: translateX(40vw) translateY(50px) scaleX(0.9);
+    }
+    100% {
+      transform: translateX(-40vw) translateY(0);
+    }
+  }
+  
+  .animatedImage {
+    width: 150px;
+    height: auto;
+    animation: flyEllipse 6s ease-in-out infinite;
+    position: relative;
+  }
+  
+
+  .animatedImage {
+    width: 300px; /* Уменьшаем размер */
+    height: auto;
+    animation: flyAcross 5s linear infinite;
+    position: relative;
   }
   

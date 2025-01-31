@@ -33,7 +33,6 @@ class CardController {
       if (!isValidId(id)) {
         return res.status(400).json(formatResponse(400, "Invalid topic ID"));
       }
-
       const { isValid, error } = CardValidator.validate({
         englishWord,
         russianWord,

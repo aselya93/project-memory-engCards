@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UserValidator from "../../../../entities/user/api/User.validator";
 import { setAccessToken } from "../../../../shared/lib/axiosInstance";
 import UserApi from "../../../../entities/user/api/UserApi";
+import styles from "../AuthForm.module.css"; 
 
 export default function AuthForm({ type, setUser }) {
   const [inputs, setInputs] = useState({
@@ -93,42 +94,51 @@ export default function AuthForm({ type, setUser }) {
   }
 
   return (
-    <>
-      <h3> {type === "signin" ? "Вход" : "Регистрация"} </h3>{" "}
-      <form onSubmit={submitHandler}>
-        <input
-          onChange={changeHandler}
-          type="email"
-          name="email"
-          value={inputs.email}
-          placeholder="email"
-          required
-          autoFocus
-          autoComplete="email"
-        />
+    <div className={styles.formWrapper}>
+    <h3 className={styles.formTitle}>
+      {type === "signin" ? "Sign in" : "Sign up"}
+    </h3>
+    <form onSubmit={submitHandler} className={styles.form}>
+      <input
+        onChange={changeHandler}
+        type="email"
+        name="email"
+        value={inputs.email}
+        placeholder="Email"
+        required
+        autoFocus
+        autoComplete="email"
+        className={styles.input}
+      />
 
+      <input
+        onChange={changeHandler}
+        type="password"
+        name="password"
+        value={inputs.password}
+        placeholder="Password"
+        required
+        className={styles.input}
+      />
+      {type === "signup" && (
         <input
           onChange={changeHandler}
-          type="password"
-          name="password"
-          value={inputs.password}
-          placeholder="password"
+          name="username"
+          value={inputs.username}
+          placeholder="Username"
           required
-          autoFocus
+          className={styles.input}
         />
-        {type === "signup" && (
-          <input
-            onChange={changeHandler}
-            name="username"
-            value={inputs.username}
-            placeholder="username"
-            required
-          />
-        )}
-        <Button type="primary" htmlType="submit" disabled={loading}>
-          {type === "signin" ? "Войти" : "Зарегистрироваться"}
-        </Button>
-      </form>
-    </>
-  );
+      )}
+      <Button
+        type="primary"
+        htmlType="submit"
+        disabled={loading}
+        className={styles.submitButton}
+      >
+        {type === "signin" ? "Sign in" : "Sign up"}
+      </Button>
+    </form>
+  </div>
+  )
 }

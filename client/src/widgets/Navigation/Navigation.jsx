@@ -4,7 +4,10 @@ import { message as antMessage, Button } from "antd";
 import { setAccessToken } from "../../shared/lib/axiosInstance";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import { Header } from "antd/es/layout/layout";
+import { Layout } from "antd";
+import logo from "../../assets//logo_owl.png";
+
+const { Header } = Layout;
 
 function Navigation({ user, setUser }) {
   const navigate = useNavigate();
@@ -30,37 +33,47 @@ function Navigation({ user, setUser }) {
   };
 
   return (
-    <div style={{ fontSize: "18px", fontWeight: "bold" }}>
-      <Header>
-        <div className={styles.navbarLinks}>
-          <Link to="/" className={styles.navLink}>
-            Home
-          </Link>
-
+    <>
+      <Header className={styles.navbar}>
+        <div className={styles.navbarContainer}>
+          <div className={styles.navbarLinks}>
+            <Link to="/" className={styles.navLink}>
+              Home
+            </Link>
+            {user && (
+              <Link to="/topics" className={styles.navLink}>
+                Go to topics
+              </Link>
+            )}
+          </div>
+          <div className={styles.navbarLinks}>
+            <Link to="/">
+              <img src={logo} alt="Logo" className={styles.logo} />
+            </Link>
+          </div>
           {user ? (
             <div className={styles.userSection}>
-              <span className={styles.username}>Welcome, {user.username}</span>
-              <Link to="/createMemoryCardByTopicId" className={styles.navLink}>
-                <Button type="primary">Add New Word</Button>
-              </Link>
-              <Button onClick={signOutHandler} className={styles.logoutButton}>
+              <span className={styles.username}>Hi, {user.username}</span>
+              <button onClick={signOutHandler} className={styles.navLinkLogOut}>
                 Log Out
-              </Button>
+              </button>
             </div>
           ) : (
-            <div className={styles.authLinks}>
+            <div className={styles.navbarLinks}>
               <Link to="/signin" className={styles.navLink}>
-                <Button type="link">Sign In</Button>
+                Sign In
               </Link>
               <Link to="/signup" className={styles.navLink}>
-                <Button type="link">Sign Up</Button>
+                Sign Up
               </Link>
             </div>
           )}
         </div>
       </Header>
-      <Outlet />
-    </div>
+      <div className={styles.mainContent}>
+        <Outlet />
+      </div>
+    </>
   );
 }
 
