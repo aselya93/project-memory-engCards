@@ -19,6 +19,22 @@
     background-color: #90cc9f;
   }
 
+  .navLinkCreateNewCard { 
+    padding: 8px 16px;
+  background-color: transparent; /* Прозрачный фон */
+  color: #454646; /* Цвет текста */
+  /* border: 2px solid #007bff; Цвет границы */
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+      }
+
+      .navLinkCreateNewCard:hover {
+        background-color: #90cc9f;
+      }
+
 
 .formField {
     margin-bottom: 15px;

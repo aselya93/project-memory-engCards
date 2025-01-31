@@ -8,7 +8,7 @@ import CreateMemoryCard from "../CreateMemoryCard/CreateMemoryCard";
 import { Progress } from "antd";
 
 function MemoryCardList({ user }) {
-  // topicId передаем как пропс
+
   const [memoryCards, setMemoryCards] = useState([]);
   const [filteredCards, setFilteredCards] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ function MemoryCardList({ user }) {
   const [learnedCardIds, setLearnedCardIds] = useState([]); // Массив для хранения id изученных карточек
   const { topicId } = useParams();
 
-  // Загружаем все карточки
+ 
   const loadMemoryCards = async () => {
     setLoading(true);
     try {
@@ -53,6 +53,12 @@ function MemoryCardList({ user }) {
   useEffect(() => {
     loadMemoryCards();
   }, [topicId]);
+
+  // Функция для обновления списка карточек после добавления новой
+  const handleCardCreated = (newCard) => {
+    setMemoryCards((prevCards) => [...prevCards, newCard]);
+    setFilteredCards((prevCards) => [...prevCards, newCard]);
+  };
 
   // Функция для расчета прогресса
   const calculateProgress = () => {
@@ -105,7 +111,7 @@ function MemoryCardList({ user }) {
 
       {showLearned && renderProgressBar()}
 
-      <CreateMemoryCard user={user} topicId={topicId} />
+      <CreateMemoryCard user={user} topicId={topicId} handleCardCreated={handleCardCreated} />
 
       {loading ? (
         <h4 className={styles.loadingMessage}>Загрузка...</h4>

@@ -4,13 +4,13 @@ import { message as antMessage } from "antd";
 import MemoryCardApi from "../../entities/memoryCard/api/MemoryCardApi";
 import styles from "./CreateMemoryCard.module.css"; // Импортируйте ваш файл стилей
 
-function CreateMemoryCard({ user, topicId }) {
+function CreateMemoryCard({ user, topicId, handleCardCreated }) {
   const [newMemoryCard, setNewMemoryCard] = useState({
     englishWord: "",
     russianWord: "",
     isLearned: false,
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false); // Состояние для управления отображением формы
 
@@ -19,19 +19,20 @@ function CreateMemoryCard({ user, topicId }) {
       antMessage.error("У вас нет прав");
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       const response = await MemoryCardApi.createMemoryCard(topicId, {
         ...newMemoryCard,
         userId: user.id,
       });
-      
+
       antMessage.success("Карточка успешно создана");
       // Сбросить форму после успешного создания
       setNewMemoryCard({ englishWord: "", russianWord: "", isLearned: false });
       setShowForm(false); // Закрыть форму после создания
+      handleCardCreated(response.data)
     } catch (error) {
       antMessage.error(`Ошибка при создании карточки: ${error.message}`);
       console.log(error);
@@ -42,9 +43,9 @@ function CreateMemoryCard({ user, topicId }) {
 
   return (
     <div>
-      <Button className={styles.createButton}  onClick={() => setShowForm(!showForm)}>
+      <button  className={styles.navLinkCreateNewCard} onClick={() => setShowForm(!showForm)}>
         {showForm ? "Hide Form" : "Create New Card"}
-      </Button>
+      </button>
 
       {showForm && (
         <div className={styles.formContainer}>
