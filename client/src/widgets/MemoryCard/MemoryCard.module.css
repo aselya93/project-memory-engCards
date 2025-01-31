@@ -1,0 +1,107 @@
+.cardContainer {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  
+}
+
+.card {
+  width: 250px;
+  height: 350px;
+  background-color: #f4f4f4; /* Мягкий серый фон */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #d1d1d1; /* Тонкая граница */
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333; /* Цвет текста */
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #d1d1d1; /* Добавляем границы к обеим сторонам */
+}
+
+.cardFront {
+  background-color: #ffffff; /* Белый фон */
+  font-weight: bold;
+}
+
+.cardBack {
+  background-color: #f2f2f2; /* Очень светлый серый фон */
+  color: #333;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  justify-content: center !important;  /*  Центрируем текст по вертикали */
+  align-items: center;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.learnedButton {
+  position: absolute;
+  position: absolute;
+  bottom: 15px;
+  right: 15px; /* Перемещаем кнопку в нижний правый угол */
+  padding: 10px 20px;
+  background-color: #5a5a5a; /* Цвет по умолчанию */
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.learnedButton:hover {
+  background-color: #054426; /* Более темный серый при наведении */
+}
+
+.learnedButton:focus {
+  outline: none;
+  background-color: #28a745;
+}
+/* Стили для метки "Изучено" */
+.learnedTag {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #28a745 !important;
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Добавляем легкую тень */
+  margin-top: 200px;
+}
+
+/* Стили для рамки обратной стороны карточки */
+.cardBack {
+  position: relative;
+  padding: 20px;
+  border: 3px solid #d1d1d1; /* Увеличенная рамка на обратной стороне */
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}

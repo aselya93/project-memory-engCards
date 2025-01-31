@@ -1,0 +1,130 @@
+/* Фиксируем навигацию сверху и центрируем */
+.navbar  {
+  background-color: #ffffff; /* Светлый фон */
+  padding: 15px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Контейнер для центрирования */
+.navbarContainer {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* Навигационные ссылки */
+.navbarLinks {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navLink {
+  font-size: 1.3rem;
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navLink:hover {
+  color: #026a6a;
+  font-weight: 400; /* Увеличиваем жирность текста */
+  transform: scale(1.1); /* Немного увеличиваем размер кнопки */
+}
+
+.navLinkLogOut {
+  font-size: 1.3rem;
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  border: none; /* Убираем рамку */
+  background: none; /* Убираем фоновое изображение */
+}
+.navLinkLogOut:hover {
+  color: #026a6a;
+  font-weight: 400; /* Увеличиваем жирность текста */
+  transform: scale(1.1); /* Немного увеличиваем размер кнопки */
+}
+
+
+/* Блок пользователя */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #555;
+}
+
+.logoutButton {
+  background-color: #ff4d4f;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.logo {
+  height: 100px;  /* Уменьшаем высоту */
+  width: auto;   /* Автоматическая ширина */
+  max-width: 150px; /* Ограничение максимального размера */
+  transition: transform 0.3s ease;
+  margin-top: 30px;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+
+.logoutButton:hover {
+  background-color: #170505;
+}
+
+/* Блок авторизации */
+.authLinks {
+  display: flex;
+  gap: 15px;
+  font-size: 1.2rem;
+}
+
+/* Фикс сдвига контента вниз, чтобы он не перекрывался навигацией */
+.mainContent {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .navbarContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .userSection,
+  .authLinks {
+    margin-top: 10px;
+  }
+}
+

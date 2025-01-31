@@ -1,0 +1,69 @@
+.formContainer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.formContainer h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #363030;
+}
+
+.createButton {
+    margin-top: 20px; /* Добавьте верхний отступ */
+}
+.createButton:hover {
+    background-color: #90cc9f;
+  }
+
+  .navLinkCreateNewCard { 
+    padding: 8px 16px;
+  background-color: transparent; /* Прозрачный фон */
+  color: #454646; /* Цвет текста */
+  /* border: 2px solid #007bff; Цвет границы */
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+      }
+
+      .navLinkCreateNewCard:hover {
+        background-color: #90cc9f;
+      }
+
+
+.formField {
+    margin-bottom: 15px;
+}
+
+.formField label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formField input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d1d1;
+}
+
+.submitButton {
+    padding: 10px 20px;
+    background-color: #0ca2af;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 9px;
+}
+
+.submitButton:hover {
+    background-color: #32984b;
+}
